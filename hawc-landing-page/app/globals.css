@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-orbitron), sans-serif;
+  --font-body: var(--font-rajdhani), sans-serif;
+  
+  --color-primary: #0EA5E9;
+  --color-background-light: #f8fafc;
+  --color-background-dark: #020617;
+  --color-card-light: #ffffff;
+  --color-card-dark: #0f172a;
+}
+
+@layer utilities {
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #38bdf8, #94a3b8);
+  }
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 1));
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #0EA5E9;
+  border-radius: 4px;
+}
