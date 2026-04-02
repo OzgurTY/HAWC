@@ -15,6 +15,8 @@ import cemImg from "./people/cemsalturk.jpeg";
 import emirhanImg from "./people/emirhanadigozel.jpeg";
 import burakImg from "./people/buraktoroglu.png";
 import gokayImg from "./people/gokayturken.jpeg";
+import SolutionsSection from '@/components/home/SolutionsSection';
+
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,6 +49,7 @@ export default function Home() {
                   </button>
                   <div className="absolute top-full left-0 mt-2 w-48 rounded-xl shadow-lg bg-white dark:bg-slate-900 ring-1 ring-black ring-opacity-5 border border-slate-200 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0 text-slate-800 dark:text-slate-200 p-2 overflow-hidden backdrop-blur-xl">
                     <Link href="/researches" className="block px-4 py-3 text-sm rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Research</Link>
+                    <Link href="/solutions" className="block px-4 py-3 text-sm rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-emerald-500 transition-colors">Solutions</Link>
                     <Link href="/achievements" className="block px-4 py-3 text-sm rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-green-500 transition-colors">Achievements</Link>
                   </div>
                 </div>
@@ -84,6 +87,7 @@ export default function Home() {
                 {mobileDiscoverOpen && (
                   <div className="pl-6 space-y-1">
                     <Link href="/researches" onClick={() => setMobileMenuOpen(false)} className="text-slate-500 dark:text-slate-400 hover:text-primary block px-3 py-2 rounded-md text-sm font-medium">Research</Link>
+                    <Link href="/solutions" onClick={() => setMobileMenuOpen(false)} className="text-slate-500 dark:text-slate-400 hover:text-emerald-500 block px-3 py-2 rounded-md text-sm font-medium">Solutions</Link>
                     <Link href="/achievements" onClick={() => setMobileMenuOpen(false)} className="text-slate-500 dark:text-slate-400 hover:text-green-500 block px-3 py-2 rounded-md text-sm font-medium">Achievements</Link>
                   </div>
                 )}
@@ -398,10 +402,12 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
+
+      {/* Solutions Section */}
+      <SolutionsSection />
 
       {/* Team Section */}
       <section id="team" className="py-24 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
