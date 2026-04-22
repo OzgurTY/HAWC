@@ -449,7 +449,7 @@ export default function Home() {
                     src={member.img}
                     alt={member.name}
                     fill
-                    className="object-cover object-center filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
                   {/* Default State Gradient */}
