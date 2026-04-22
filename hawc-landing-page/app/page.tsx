@@ -16,6 +16,7 @@ import emirhanImg from "./people/emirhanadigozel.jpeg";
 import burakImg from "./people/buraktoroglu.png";
 import gokayImg from "./people/gokayturken.jpeg";
 import SolutionsSection from '@/components/home/SolutionsSection';
+import DesignThinkingSection from '@/components/home/DesignThinkingSection';
 
 
 export default function Home() {
@@ -332,6 +333,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Design Thinking Methodology Section */}
+      <DesignThinkingSection />
+
       {/* Bottlenecks Section */}
       <section id="bottlenecks" className="py-24 bg-slate-100 dark:bg-slate-900/50 relative overflow-hidden">
         {/* Decorative Grid */}
@@ -425,12 +429,12 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: "Özgür Tuna Yavuz", role: "CEO", img: ozgurImg },
-              { name: "Emirhan Adıgözel", role: "CTO", img: emirhanImg },
-              { name: "Cem Saltürk", role: "CMO", img: cemImg },
-              { name: "Burak Toroğlu", role: "CFO", img: burakImg },
-              { name: "Duygu Yaldız", role: "COO", img: duyguImg },
-              { name: "Gökay Türken", role: "Head of Government Affairs", img: gokayImg }
+              { name: "Özgür Tuna Yavuz", role: "CEO", img: ozgurImg, desc: "Drives the overarching strategic vision, ensuring that our high-altitude wind capture technology accelerates the global transition toward risk-distributed and economically viable renewable energy systems." },
+              { name: "Emirhan Adıgözel", role: "CTO", img: emirhanImg, desc: "Directs the core engineering initiatives, specifically optimizing the complex technical trade-offs between flight aerodynamics, tether conductivity, and power electronics." },
+              { name: "Cem Saltürk", role: "CMO", img: cemImg, desc: "Crafts a futuristic and compelling corporate brand identity that effectively communicates the technical brilliance of our airborne wind systems to investors, partners, and the broader public." },
+              { name: "Burak Toroğlu", role: "CFO", img: burakImg, desc: "Manages the financial strategy and economic modeling, ensuring that the capital-intensive research and development phases translate into a profitable, scalable business model." },
+              { name: "Duygu Yaldız", role: "COO", img: duyguImg, desc: "Orchestrates the day-to-day operational logistics, bridging the gap between hardware manufacturing, laboratory circuit testing, and active field deployment." },
+              { name: "Gökay Türken", role: "Head of Government Affairs", img: gokayImg, desc: "Navigates complex national airspace regulations and energy policies, advocating for legislative support to safely integrate our flying turbines into the commercial grid." }
             ].map((member, index) => (
               <motion.div
                 key={index}
@@ -448,10 +452,23 @@ export default function Home() {
                     className="object-cover object-center filter grayscale group-hover:grayscale-0 transition-all duration-500"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-                  <div className="absolute bottom-0 left-0 p-6 w-full">
-                    <h3 className="text-xl font-bold text-white font-display">{member.name}</h3>
-                    <p className="text-primary font-medium tracking-wider text-sm">{member.role}</p>
+                  {/* Default State Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-500"></div>
+                  
+                  {/* Default Name & Role */}
+                  <div className="absolute bottom-0 left-0 p-6 w-full transform group-hover:-translate-y-4 group-hover:opacity-0 transition-all duration-500 ease-out">
+                    <h3 className="text-xl font-bold text-white font-display leading-tight">{member.name}</h3>
+                    <p className="text-primary font-medium tracking-wider text-sm mt-1">{member.role}</p>
+                  </div>
+
+                  {/* Hover State Detail (Slides up and fades in) */}
+                  <div className="absolute inset-0 bg-black/80 backdrop-blur-sm p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out border border-transparent group-hover:border-primary/50 rounded-lg">
+                    <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out delay-100">
+                      <h3 className="text-xl font-bold text-white font-display leading-tight">{member.name}</h3>
+                      <p className="text-primary font-medium tracking-wider text-sm mt-1 mb-4">{member.role}</p>
+                      <div className="w-8 h-1 bg-primary mb-4 rounded-full shadow-[0_0_10px_rgba(56,189,248,0.8)]"></div>
+                      <p className="text-slate-300 text-sm leading-relaxed font-light">{member.desc}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
