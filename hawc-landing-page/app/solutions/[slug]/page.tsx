@@ -4,7 +4,7 @@ import { use, useState } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'motion/react';
-import { ArrowLeft, ArrowUpRight, ImageOff } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, ImageOff, Search, PenTool, Lightbulb, Wrench, Activity } from 'lucide-react';
 import HawcText from '@/components/HawcText';
 import Spline from '@splinetool/react-spline';
 import { solutionsData } from '@/lib/solutionsData';
@@ -170,20 +170,83 @@ export default function SolutionDetailPage({ params }: { params: Promise<{ slug:
                                     </motion.div>
                                 ))}
 
-                                {/* Awaiting More Content Section */}
+                                {/* Design Thinking Progress Section */}
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5, delay: 0.8 }}
-                                    className="p-10 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/30 flex flex-col items-center justify-center text-center py-12 relative overflow-hidden backdrop-blur-sm group"
+                                    className="p-8 md:p-10 rounded-3xl bg-slate-900 border border-slate-800 relative xl:overflow-hidden shadow-2xl group"
                                 >
-                                    <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,64,60,0.03)_50%,transparent_75%,transparent_100%)] dark:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:4px_4px]"></div>
-                                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-tr ${solution.color} flex items-center justify-center mb-6 shadow-lg shadow-black/5 dark:shadow-none relative z-10 group-hover:scale-110 transition-transform duration-500`}>
-                                        <div className="absolute inset-2 bg-white/20 dark:bg-black/20 rounded-xl animate-pulse"></div>
-                                        <div className="w-3 h-3 bg-white rounded-full animate-ping"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-slate-900 via-slate-800/80 to-slate-900"></div>
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                                                <Search className="w-5 h-5 text-blue-400" />
+                                            </div>
+                                            <h4 className="font-display font-bold text-white text-2xl tracking-tight">
+                                                Design Thinking Status
+                                            </h4>
+                                        </div>
+                                        
+                                        <p className="text-slate-400 font-light leading-relaxed mb-12 max-w-3xl">
+                                            Our engineering framework rigorously follows the Design Thinking Methodology. For the <span className="text-white font-medium">{solution.bottleneck}</span>, we are actively operating within the <strong className="text-amber-400 font-normal">Ideation</strong> phase—conceptualizing software models and material architectures prior to physical prototyping.
+                                        </p>
+
+                                        {/* Progress Steps */}
+                                        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 relative pt-4">
+                                            {/* Connecting Horizontal Line (desktop) */}
+                                            <div className="hidden md:block absolute top-[24px] left-[10%] w-[80%] h-[2px] bg-slate-800/80 z-0"></div>
+                                            
+                                            {/* Active Line (up to step 3) */}
+                                            <div className="hidden md:block absolute top-[24px] left-[10%] w-[40%] h-[2px] bg-gradient-to-r from-emerald-500 to-amber-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] z-0"></div>
+
+                                            {/* Stage 1 */}
+                                            <div className="relative z-10 flex flex-col items-center">
+                                                <div className="w-12 h-12 rounded-full bg-emerald-500/10 border-2 border-emerald-500/50 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.2)] text-emerald-400 mb-4 backdrop-blur-sm">
+                                                    <Search className="w-5 h-5" />
+                                                </div>
+                                                <span className="text-sm font-bold text-white mb-1">Empathize</span>
+                                                <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-bold">Completed</span>
+                                            </div>
+
+                                            {/* Stage 2 */}
+                                            <div className="relative z-10 flex flex-col items-center">
+                                                <div className="w-12 h-12 rounded-full bg-emerald-500/10 border-2 border-emerald-500/50 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.2)] text-emerald-400 mb-4 backdrop-blur-sm">
+                                                    <PenTool className="w-5 h-5" />
+                                                </div>
+                                                <span className="text-sm font-bold text-white mb-1">Define</span>
+                                                <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-bold">Completed</span>
+                                            </div>
+
+                                            {/* Stage 3 (Current) */}
+                                            <div className="relative z-10 flex flex-col items-center group/step">
+                                                <div className="absolute inset-0 bg-amber-500/20 blur-2xl rounded-full scale-150 animate-pulse"></div>
+                                                <div className="w-14 h-14 -mt-1 rounded-full bg-amber-500 border-4 border-slate-900 flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.5)] text-white mb-3 relative z-10">
+                                                    <Lightbulb className="w-6 h-6" />
+                                                </div>
+                                                <span className="text-sm font-bold text-amber-400 mb-1">Ideate</span>
+                                                <span className="text-[10px] text-amber-500/80 uppercase tracking-widest font-bold animate-pulse">Current Phase</span>
+                                            </div>
+
+                                            {/* Stage 4 */}
+                                            <div className="relative z-10 flex flex-col items-center opacity-40 grayscale">
+                                                <div className="w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center text-slate-400 mb-4">
+                                                    <Wrench className="w-5 h-5" />
+                                                </div>
+                                                <span className="text-sm font-bold text-slate-300 mb-1">Prototype</span>
+                                                <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Pending</span>
+                                            </div>
+
+                                            {/* Stage 5 */}
+                                            <div className="relative z-10 flex flex-col items-center opacity-40 grayscale">
+                                                <div className="w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center text-slate-400 mb-4">
+                                                    <Activity className="w-5 h-5" />
+                                                </div>
+                                                <span className="text-sm font-bold text-slate-300 mb-1">Test</span>
+                                                <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Pending</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 text-xl mb-3 relative z-10">Research Ongoing</h4>
-                                    <p className="text-slate-500 dark:text-slate-400 max-w-md relative z-10 leading-relaxed font-light">System architecture analysis and mathematical models are actively being refined. Stay tuned for further technical updates.</p>
                                 </motion.div>
                             </div>
                         </div>
